@@ -1,0 +1,54 @@
+public class HojaDeTomate {
+    // Definir enums para color y salud
+    public enum Color { VERDE, AMARILLO, MARRON, VERDE_CLARO }
+    public enum Salud { SALUDABLE, DEFICIENTE, ENFERMA, DEBIL }
+
+    private Color color;
+    private Salud salud;
+
+    public HojaDeTomate(Color color, Salud salud) {
+        this.color = color;
+        this.salud = salud;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Salud getSalud() {
+        return salud;
+    }
+
+    // Método para evaluar la salud basado en el color
+    public String evaluarSalud() {
+        switch (color) {
+            case VERDE:
+                return (salud == Salud.SALUDABLE)
+                        ? "Esta hoja está en buenas condiciones."
+                        : "Esta hoja está verde pero no está completamente saludable.";
+            case AMARILLO:
+            case MARRON:
+            case VERDE_CLARO:
+                return "Esta hoja no es verde y podría estar enferma.";
+            default:
+                return "Estado desconocido.";
+        }
+    }
+
+    public static void main(String[] args) {
+        // Crear un arreglo de hojas usando los enums
+        HojaDeTomate[] hojas = new HojaDeTomate[]{
+            new HojaDeTomate(Color.VERDE, Salud.SALUDABLE),
+            new HojaDeTomate(Color.AMARILLO, Salud.DEFICIENTE),
+            new HojaDeTomate(Color.VERDE, Salud.SALUDABLE),
+            new HojaDeTomate(Color.MARRON, Salud.ENFERMA),
+            new HojaDeTomate(Color.VERDE_CLARO, Salud.DEBIL)
+        };
+
+        // Evaluar y mostrar la salud de cada hoja
+        for (HojaDeTomate hoja : hojas) {
+            System.out.println("Color: " + hoja.getColor() + " - Salud: " + hoja.getSalud());
+            System.out.println(hoja.evaluarSalud());
+        }
+    }
+}

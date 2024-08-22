@@ -1,0 +1,52 @@
+import java.util.Stack;
+
+public class HojaDeTomate {
+    private int r, g, b; // Valores RGB para el color
+    private String salud;
+
+    public HojaDeTomate(int r, int g, int b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.salud = determinarSalud();
+    }
+
+    private String determinarSalud() {
+        // Calcular el tono del color basado en los valores RGB
+        if (g > 100 && r < 100 && b < 100) { // Verde dominante
+            return "saludable";
+        } else if (g > 50 && r > 50 && b < 50) { // Amarillento
+            return "deficiente";
+        } else if (r > 100 && g < 50 && b < 50) { // Marrón dominante
+            return "enferma";
+        } else {
+            return "desconocida";
+        }
+    }
+
+    public String getColorRGB() {
+        return String.format("RGB(%d, %d, %d)", r, g, b);
+    }
+
+    public String getSalud() {
+        return salud;
+    }
+
+    public static void main(String[] args) {
+        // Crear una pila de hojas
+        Stack<HojaDeTomate> pilaDeHojas = new Stack<>();
+
+        // Agregar hojas con diferentes colores (RGB) a la pila
+        pilaDeHojas.push(new HojaDeTomate(34, 139, 34)); // Verde
+        pilaDeHojas.push(new HojaDeTomate(255, 255, 0));  // Amarillo
+        pilaDeHojas.push(new HojaDeTomate(139, 69, 19));  // Marrón
+        pilaDeHojas.push(new HojaDeTomate(128, 128, 0));  // Verde olivo
+        pilaDeHojas.push(new HojaDeTomate(85, 107, 47));  // Verde oscuro
+
+        // Evaluar la salud de las hojas mientras se sacan de la pila
+        while (!pilaDeHojas.isEmpty()) {
+            HojaDeTomate hoja = pilaDeHojas.pop();
+            System.out.println("Color: " + hoja.getColorRGB() + " - Salud: " + hoja.getSalud());
+        }
+    }
+}

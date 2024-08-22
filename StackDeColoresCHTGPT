@@ -1,0 +1,33 @@
+import java.util.Stack;
+
+public class ColorStackHexExample {
+
+    public static void main(String[] args) {
+        // Crear un Stack de colores en formato hexadecimal
+        Stack<String> colorStack = new Stack<>();
+
+        // Pushear colores al Stack (de verde a café)
+        colorStack.push("#008000"); // Verde
+        colorStack.push("#ADFF2F"); // Verde amarillo
+        colorStack.push("#FFFF00"); // Amarillo
+        colorStack.push("#FFA500"); // Naranja
+        colorStack.push("#FF4500"); // Rojo anaranjado
+        colorStack.push("#8B4513"); // Marrón oscuro (Café)
+
+        // Imprimir el Stack completo
+        System.out.println("Colores en el Stack: " + colorStack);
+
+        // Acceder al color en la cima del Stack
+        System.out.println("Color en la cima: " + colorStack.peek());
+
+        // Pop de elementos del Stack
+        while (!colorStack.isEmpty()) {
+            System.out.println("Removiendo: " + colorStack.pop());
+        }
+
+        // Comprobar que el Stack está vacío
+        if (colorStack.isEmpty()) {
+            System.out.println("El Stack ahora está vacío.");
+        }
+    }
+}

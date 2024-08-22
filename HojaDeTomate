@@ -1,0 +1,41 @@
+public class HojaDeTomate {
+    private String color;
+    private String salud;
+
+    public HojaDeTomate(String color, String salud) {
+        this.color = color;
+        this.salud = salud;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getSalud() {
+        return salud;
+    }
+
+    public static void main(String[] args) {
+        // Crear un arreglo de hojas
+        HojaDeTomate[] hojas = new HojaDeTomate[5];
+        hojas[0] = new HojaDeTomate("verde", "saludable");
+        hojas[1] = new HojaDeTomate("amarillo", "deficiente");
+        hojas[2] = new HojaDeTomate("verde", "saludable");
+        hojas[3] = new HojaDeTomate("marrón", "enferma");
+        hojas[4] = new HojaDeTomate("verde claro", "débil");
+
+        // Comparar el color de las hojas con su salud
+        for (HojaDeTomate hoja : hojas) {
+            System.out.println("Color: " + hoja.getColor() + " - Salud: " + hoja.getSalud());
+            if ("verde".equals(hoja.getColor())) {
+                if ("saludable".equals(hoja.getSalud())) {
+                    System.out.println("Esta hoja está en buenas condiciones.");
+                } else {
+                    System.out.println("Esta hoja está verde pero no está completamente saludable.");
+                }
+            } else {
+                System.out.println("Esta hoja no es verde y podría estar enferma.");
+            }
+        }
+    }
+}
